@@ -48,7 +48,7 @@ class DockerApp(QApplication):
         
     def _updateContents(self):
         # Update container list
-        self.containerList = self.client.containers.list(all=True, sparse=True)
+        self.containerList = self.client.getContainerList()
         self.window.containerTableCtn.setRowCount(0)
         self.window.containerTableCtn.setRowCount(len(self.containerList))
         for i in range(len(self.containerList)):
@@ -59,7 +59,7 @@ class DockerApp(QApplication):
             self.window.containerTableCtn.setItem(i, 4, tableItemRO(ctn.id[0:12]))
         
         # Update image list
-        self.imageList = self.client.images.list()
+        self.imageList = self.client.getImageList()
         self.window.imageTableCtn.setRowCount(0)
         self.window.imageTableCtn.setRowCount(len(self.imageList))
         for i in range(len(self.imageList)):
@@ -129,6 +129,7 @@ class DockerApp(QApplication):
         self.window.containerTableCtn.selectionModel().selectionChanged.connect(self.changeContainerSelection)
         self.window.startContainerBtn.clicked.connect(self.doStartContainer)
         self.window.stopContainerBtn.clicked.connect(self.doStopContainer)
+        self.window.deleteContainerBtn.clicked.connect(self.doDeleteContainer)
         
     def exec_(self):
         self.window = MainWindow()
@@ -178,6 +179,17 @@ class DockerApp(QApplication):
         print('Stopping: {}'.format(self.currentContainer.id))
         self.currentContainer.stop()
         print('Done')
+        
+    def doDeleteContainer(self):
+        ask = QMessageBox()
+        ask.setWindowTitle('Confirmation')
+        ask.setText('Do you really want to delete \'{}\' ?'.format(self.currentContainer.name))
+        ask.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+        if (ask.exec_()==QMessageBox.Yes):
+            print("Deleting")
+            self.currentContainer.remove()
+            self._updateContents()
+        else: print("Abort deletion")
 
 
 if __name__ == "__main__":

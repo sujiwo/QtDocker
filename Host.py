@@ -48,14 +48,12 @@ class Host(docker.DockerClient):
         except:
             return False
     
-    def getImageList(self):
-        pass
-    
-    def getContainerList(self):
-        pass
-    
     def hasNvidiaContainerSupport(self):
-        
         pass
     
+    # XXX: Need to fix
+    def getContainerList(self):
+        return self.containers.list(all=True, sparse=True)
     
+    def getImageList(self):
+        return self.images.list()
