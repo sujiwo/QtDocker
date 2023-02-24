@@ -129,7 +129,7 @@ class DockerApp(QApplication):
         
     def exec_(self):
         self.window = MainWindow()
-        self.window.setWindowTitle("DockerApp")
+        self.window.setWindowTitle("QtDocker")
         self.initApp()
         self._setSignals()
         self.window.show()
