@@ -81,6 +81,9 @@ class CreateContainerWindow(WindowFromUiFile):
         arg = {}
         arg['name'] = self.nameInput.text()
         arg['image'] = self.sourceImageCbx.currentText()
+        if (self.isInteractive.isChecked()==True):
+            arg['stdin_open']=True
+            arg['tty']=True
         return arg
 
     
