@@ -101,15 +101,16 @@ class DockerApp(QApplication):
             
     def changeContainerSelection(self, current, prev):
         if (len(current.indexes())!=0):
+            
             selector = current.indexes()[0].row()
-            container = self.containerList[selector]
-            if container.status=='exited':
+            self.currentContainer = self.containerList[selector]
+            if self.currentContainer.status!='running':
                 self.window.startContainerBtn.setEnabled(True)
                 self.window.stopContainerBtn.setEnabled(False)
                 self.window.commitContainerBtn.setEnabled(True)
                 self.window.deleteContainerBtn.setEnabled(True)
                 self.window.terminalBtn.setEnabled(False)
-            elif container.status=='running':
+            elif self.currentContainer.status=='running':
                 self.window.startContainerBtn.setEnabled(False)
                 self.window.stopContainerBtn.setEnabled(True)
                 self.window.commitContainerBtn.setEnabled(False)
@@ -126,6 +127,8 @@ class DockerApp(QApplication):
         self.window.hostSelectorBox.lineEdit().returnPressed.connect(self.changeConnection)
         self.window.hostSelectorBox.currentIndexChanged.connect(self.changeConnection)
         self.window.containerTableCtn.selectionModel().selectionChanged.connect(self.changeContainerSelection)
+        self.window.startContainerBtn.clicked.connect(self.doStartContainer)
+        self.window.stopContainerBtn.clicked.connect(self.doStopContainer)
         
     def exec_(self):
         self.window = MainWindow()
@@ -165,6 +168,16 @@ class DockerApp(QApplication):
         # Fill with recently succesful connections
         for h in self.config['hosts']:
             self.window.hostSelectorBox.addItem(h)
+            
+    def doStartContainer(self):
+        print('Starting: {}'.format(self.currentContainer.id))
+        self.currentContainer.start()
+        print('Done')
+        
+    def doStopContainer(self):
+        print('Stopping: {}'.format(self.currentContainer.id))
+        self.currentContainer.stop()
+        print('Done')
 
 
 if __name__ == "__main__":
