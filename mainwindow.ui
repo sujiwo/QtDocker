@@ -82,7 +82,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="containerTab">
        <attribute name="title">
@@ -292,12 +292,18 @@
                <property name="text">
                 <string>Inspect...</string>
                </property>
+               <property name="icon">
+                <iconset theme="edit-find"/>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_2">
                <property name="text">
                 <string>Delete</string>
+               </property>
+               <property name="icon">
+                <iconset theme="edit-delete"/>
                </property>
               </widget>
              </item>
@@ -306,12 +312,18 @@
                <property name="text">
                 <string>Pull...</string>
                </property>
+               <property name="icon">
+                <iconset theme="document-save"/>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_4">
                <property name="text">
                 <string>Push...</string>
+               </property>
+               <property name="icon">
+                <iconset theme="document-send"/>
                </property>
               </widget>
              </item>
@@ -320,12 +332,18 @@
                <property name="text">
                 <string>Load...</string>
                </property>
+               <property name="icon">
+                <iconset theme="document-open"/>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_6">
                <property name="text">
                 <string>Save...</string>
+               </property>
+               <property name="icon">
+                <iconset theme="document-save-as"/>
                </property>
               </widget>
              </item>

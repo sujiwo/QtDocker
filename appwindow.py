@@ -12,7 +12,7 @@ from PySide2.QtUiTools import QUiLoader
 from MainWindow import Ui_MainWindow
 from CreateContainer import CreateContainerWindow
 from Host import Host
-
+from Widgets import *
 
 
 # For Windows, should use %LOCALAPPDATA%/docker.json
@@ -34,12 +34,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         
 
-class tableItemRO(QTableWidgetItem):
-    def __init__(self, text):
-        QTableWidgetItem.__init__(self, text)
-        # self.setFlags(self.flags() & ~Qt.ItemIsEditable & Qt.ItemIsSelectable & Qt.ItemIsEnabled)
-
-
 class DockerApp(QApplication):
     
     def __init__ (self, argv):
@@ -53,10 +47,10 @@ class DockerApp(QApplication):
         self.window.containerTableCtn.setRowCount(len(self.containerList))
         for i in range(len(self.containerList)):
             ctn = self.containerList[i]
-            self.window.containerTableCtn.setItem(i, 0, tableItemRO(ctn.name))
-            self.window.containerTableCtn.setItem(i, 1, tableItemRO(ctn.image.tags[0]))
-            self.window.containerTableCtn.setItem(i, 3, tableItemRO(ctn.status))
-            self.window.containerTableCtn.setItem(i, 4, tableItemRO(ctn.id[0:12]))
+            self.window.containerTableCtn.setItem(i, 0, TableItemRO(ctn.name))
+            self.window.containerTableCtn.setItem(i, 1, TableItemRO(ctn.image.tags[0]))
+            self.window.containerTableCtn.setItem(i, 3, TableItemRO(ctn.status))
+            self.window.containerTableCtn.setItem(i, 4, TableItemRO(ctn.id[0:12]))
         
         # Update image list
         self.imageList = self.client.getImageList()
@@ -64,9 +58,9 @@ class DockerApp(QApplication):
         self.window.imageTableCtn.setRowCount(len(self.imageList))
         for i in range(len(self.imageList)):
             im = self.imageList[i]
-            self.window.imageTableCtn.setItem(i, 0, tableItemRO(im.tags[0]))
+            self.window.imageTableCtn.setItem(i, 0, TableItemRO(im.tags[0]))
             size = humanize.naturalsize(im.attrs['Size'])
-            self.window.imageTableCtn.setItem(i, 1, tableItemRO(size))
+            self.window.imageTableCtn.setItem(i, 1, TableItemRO(size))
             
         # Update volume list
         
@@ -76,10 +70,10 @@ class DockerApp(QApplication):
         self.window.networkTableCtn.setRowCount(len(self.networkList))
         for i in range(len(self.networkList)):
             net = self.networkList[i]
-            self.window.networkTableCtn.setItem(i, 0, tableItemRO(net.name))
-            self.window.networkTableCtn.setItem(i, 1, tableItemRO(net.attrs['Driver']))
-            self.window.networkTableCtn.setItem(i, 2, tableItemRO(net.attrs['Scope']))
-            self.window.networkTableCtn.setItem(i, 3, tableItemRO(net.short_id))
+            self.window.networkTableCtn.setItem(i, 0, TableItemRO(net.name))
+            self.window.networkTableCtn.setItem(i, 1, TableItemRO(net.attrs['Driver']))
+            self.window.networkTableCtn.setItem(i, 2, TableItemRO(net.attrs['Scope']))
+            self.window.networkTableCtn.setItem(i, 3, TableItemRO(net.short_id))
         
     def createConnection(self):
         self.client = docker.client.DockerClient()
