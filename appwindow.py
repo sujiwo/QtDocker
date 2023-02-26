@@ -95,7 +95,6 @@ class DockerApp(QApplication):
             
     def changeContainerSelection(self, current, prev):
         if (len(current.indexes())!=0):
-            
             selector = current.indexes()[0].row()
             self.currentContainer = self.containerList[selector]
             if self.currentContainer.status!='running':

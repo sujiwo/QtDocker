@@ -104,6 +104,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.createContainerBtn = QPushButton(self.widget)
         self.createContainerBtn.setObjectName(u"createContainerBtn")
+        self.createContainerBtn.setEnabled(True)
         icon1 = QIcon()
         iconThemeName = u"document-new"
         if QIcon.hasThemeIcon(iconThemeName):
@@ -130,17 +131,25 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addWidget(self.startContainerBtn)
 
+        self.pushButton_7 = QPushButton(self.widget)
+        self.pushButton_7.setObjectName(u"pushButton_7")
+        icon3 = QIcon(QIcon.fromTheme(u"media-playback-pause"))
+        self.pushButton_7.setIcon(icon3)
+        self.pushButton_7.setCheckable(True)
+
+        self.horizontalLayout_10.addWidget(self.pushButton_7)
+
         self.stopContainerBtn = QPushButton(self.widget)
         self.stopContainerBtn.setObjectName(u"stopContainerBtn")
         self.stopContainerBtn.setEnabled(False)
-        icon3 = QIcon()
+        icon4 = QIcon()
         iconThemeName = u"media-playback-stop"
         if QIcon.hasThemeIcon(iconThemeName):
-            icon3 = QIcon.fromTheme(iconThemeName)
+            icon4 = QIcon.fromTheme(iconThemeName)
         else:
-            icon3.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon4.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.stopContainerBtn.setIcon(icon3)
+        self.stopContainerBtn.setIcon(icon4)
         self.stopContainerBtn.setFlat(False)
 
         self.horizontalLayout_10.addWidget(self.stopContainerBtn)
@@ -148,14 +157,14 @@ class Ui_MainWindow(object):
         self.commitContainerBtn = QPushButton(self.widget)
         self.commitContainerBtn.setObjectName(u"commitContainerBtn")
         self.commitContainerBtn.setEnabled(False)
-        icon4 = QIcon()
+        icon5 = QIcon()
         iconThemeName = u"document-save-as"
         if QIcon.hasThemeIcon(iconThemeName):
-            icon4 = QIcon.fromTheme(iconThemeName)
+            icon5 = QIcon.fromTheme(iconThemeName)
         else:
-            icon4.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon5.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.commitContainerBtn.setIcon(icon4)
+        self.commitContainerBtn.setIcon(icon5)
         self.commitContainerBtn.setFlat(False)
 
         self.horizontalLayout_10.addWidget(self.commitContainerBtn)
@@ -163,14 +172,14 @@ class Ui_MainWindow(object):
         self.deleteContainerBtn = QPushButton(self.widget)
         self.deleteContainerBtn.setObjectName(u"deleteContainerBtn")
         self.deleteContainerBtn.setEnabled(False)
-        icon5 = QIcon()
+        icon6 = QIcon()
         iconThemeName = u"edit-delete"
         if QIcon.hasThemeIcon(iconThemeName):
-            icon5 = QIcon.fromTheme(iconThemeName)
+            icon6 = QIcon.fromTheme(iconThemeName)
         else:
-            icon5.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon6.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.deleteContainerBtn.setIcon(icon5)
+        self.deleteContainerBtn.setIcon(icon6)
         self.deleteContainerBtn.setFlat(False)
 
         self.horizontalLayout_10.addWidget(self.deleteContainerBtn)
@@ -178,22 +187,28 @@ class Ui_MainWindow(object):
         self.terminalBtn = QPushButton(self.widget)
         self.terminalBtn.setObjectName(u"terminalBtn")
         self.terminalBtn.setEnabled(False)
-        icon6 = QIcon()
+        icon7 = QIcon()
         iconThemeName = u"utilities-terminal"
         if QIcon.hasThemeIcon(iconThemeName):
-            icon6 = QIcon.fromTheme(iconThemeName)
+            icon7 = QIcon.fromTheme(iconThemeName)
         else:
-            icon6.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon7.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.terminalBtn.setIcon(icon6)
+        self.terminalBtn.setIcon(icon7)
 
         self.horizontalLayout_10.addWidget(self.terminalBtn)
 
         self.infoContainerBtn = QPushButton(self.widget)
         self.infoContainerBtn.setObjectName(u"infoContainerBtn")
         self.infoContainerBtn.setEnabled(False)
-        icon7 = QIcon(QIcon.fromTheme(u"dialog-information"))
-        self.infoContainerBtn.setIcon(icon7)
+        icon8 = QIcon()
+        iconThemeName = u"dialog-information"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon8 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon8.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
+        self.infoContainerBtn.setIcon(icon8)
 
         self.horizontalLayout_10.addWidget(self.infoContainerBtn)
 
@@ -251,31 +266,43 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.pushButton = QPushButton(self.widget_2)
         self.pushButton.setObjectName(u"pushButton")
+        icon9 = QIcon(QIcon.fromTheme(u"edit-find"))
+        self.pushButton.setIcon(icon9)
 
         self.horizontalLayout_8.addWidget(self.pushButton)
 
         self.pushButton_2 = QPushButton(self.widget_2)
         self.pushButton_2.setObjectName(u"pushButton_2")
+        icon10 = QIcon(QIcon.fromTheme(u"edit-delete"))
+        self.pushButton_2.setIcon(icon10)
 
         self.horizontalLayout_8.addWidget(self.pushButton_2)
 
         self.pushButton_3 = QPushButton(self.widget_2)
         self.pushButton_3.setObjectName(u"pushButton_3")
+        icon11 = QIcon(QIcon.fromTheme(u"document-save"))
+        self.pushButton_3.setIcon(icon11)
 
         self.horizontalLayout_8.addWidget(self.pushButton_3)
 
         self.pushButton_4 = QPushButton(self.widget_2)
         self.pushButton_4.setObjectName(u"pushButton_4")
+        icon12 = QIcon(QIcon.fromTheme(u"document-send"))
+        self.pushButton_4.setIcon(icon12)
 
         self.horizontalLayout_8.addWidget(self.pushButton_4)
 
         self.pushButton_5 = QPushButton(self.widget_2)
         self.pushButton_5.setObjectName(u"pushButton_5")
+        icon13 = QIcon(QIcon.fromTheme(u"document-open"))
+        self.pushButton_5.setIcon(icon13)
 
         self.horizontalLayout_8.addWidget(self.pushButton_5)
 
         self.pushButton_6 = QPushButton(self.widget_2)
         self.pushButton_6.setObjectName(u"pushButton_6")
+        icon14 = QIcon(QIcon.fromTheme(u"document-save-as"))
+        self.pushButton_6.setIcon(icon14)
 
         self.horizontalLayout_8.addWidget(self.pushButton_6)
 
@@ -339,27 +366,27 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.createNetworkBtn = QPushButton(self.networkTab)
         self.createNetworkBtn.setObjectName(u"createNetworkBtn")
-        icon8 = QIcon()
+        icon15 = QIcon()
         iconThemeName = u"document-new"
         if QIcon.hasThemeIcon(iconThemeName):
-            icon8 = QIcon.fromTheme(iconThemeName)
+            icon15 = QIcon.fromTheme(iconThemeName)
         else:
-            icon8.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon15.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.createNetworkBtn.setIcon(icon8)
+        self.createNetworkBtn.setIcon(icon15)
 
         self.horizontalLayout_5.addWidget(self.createNetworkBtn)
 
         self.removeNetworkBtn = QPushButton(self.networkTab)
         self.removeNetworkBtn.setObjectName(u"removeNetworkBtn")
-        icon9 = QIcon()
+        icon16 = QIcon()
         iconThemeName = u"edit-delete"
         if QIcon.hasThemeIcon(iconThemeName):
-            icon9 = QIcon.fromTheme(iconThemeName)
+            icon16 = QIcon.fromTheme(iconThemeName)
         else:
-            icon9.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon16.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.removeNetworkBtn.setIcon(icon9)
+        self.removeNetworkBtn.setIcon(icon16)
 
         self.horizontalLayout_5.addWidget(self.removeNetworkBtn)
 
@@ -435,6 +462,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.createContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
         self.startContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Pause", None))
         self.stopContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.commitContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Commit...", None))
         self.deleteContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Delete", None))

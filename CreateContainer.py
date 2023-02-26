@@ -69,7 +69,7 @@ class CreateContainerWindow(WindowFromUiFile):
         self.sourceImageCbx.clear()
         for img in self.parent.imageList:
             self.sourceImageCbx.addItem(img.tags[0])
-        self.ramGBInput.setRange(0, self.parent.client.lastInfo['MemTotal']/(1024*1024))
+        self.ramMBInput.setRange(0, self.parent.client.lastInfo['MemTotal']/(1024*1024))
         self.numOfCPUInput.setRange(0, self.parent.client.lastInfo['NCPU'])
         if (len(self.parent.client.gpuList)!=0):
             self.gpuLabel.setEnabled(True)
@@ -93,8 +93,14 @@ class CreateContainerWindow(WindowFromUiFile):
         if (self.isInteractive.isChecked()==True):
             arg['stdin_open']=True
             arg['tty']=True
-        if self.numOfCPUInput.value()!=0:
-            pass
+        arg['nano_cpus'] = int(self.numOfCPUInput.value()*1e9)
+        arg['mem_limit']=str(self.ramMBInput.value())+'m'
+        if self.sharedFolderTblCtn.rowCount()!=0:
+            arg['volumes']={}
+            for r in range(self.sharedFolderTblCtn.rowCount()):
+                p = self.sharedFolderTblCtn.item(r,0).text()
+                arg['volumes'][p] = {'bind':self.sharedFolderTblCtn.item(r,1).text(),
+                                     'mode':self.sharedFolderTblCtn.item(r,2).text()}
         return arg
 
     @Slot()
@@ -141,7 +147,7 @@ class CreateContainerWindow(WindowFromUiFile):
         buttonBox.rejected.connect(modWind.reject)
         QMetaObject.connectSlotsByName(modWind)
         modWind.setWindowTitle("Add/Edit Container Volume")
-        pathInp.setPlaceholderText("<Host Folder>")
+        pathInp.setPlaceholderText("<Host folder or volume name>")
         isReadonlyChk.setText("Read-only")
         modWind.exec_()
     
