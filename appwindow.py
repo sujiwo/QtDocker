@@ -152,7 +152,8 @@ class DockerApp(QApplication):
         except FileNotFoundError:
             # Try to create some configuration
             self.config = {
-                'hosts' : ['Local', ]
+                'hosts' : ['Local', ],
+                'hz' : 1,
             }
     
     def saveConfig(self):
