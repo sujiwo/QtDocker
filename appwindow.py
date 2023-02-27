@@ -11,6 +11,7 @@ from PySide2.QtCore import Qt
 from PySide2.QtUiTools import QUiLoader
 from MainWindow import Ui_MainWindow
 from CreateContainer import CreateContainerWindow
+from InfoContainer import InfoContainer
 from Host import Host
 from Widgets import *
 
@@ -123,6 +124,7 @@ class DockerApp(QApplication):
         self.window.startContainerBtn.clicked.connect(self.doStartContainer)
         self.window.stopContainerBtn.clicked.connect(self.doStopContainer)
         self.window.deleteContainerBtn.clicked.connect(self.doDeleteContainer)
+        self.window.infoContainerBtn.clicked.connect(self.doInspectContainer)
         
     def exec_(self):
         self.window = MainWindow()
@@ -172,6 +174,12 @@ class DockerApp(QApplication):
         print('Stopping: {}'.format(self.currentContainer.id))
         self.currentContainer.stop()
         print('Done')
+        
+    def doInspectContainer(self):
+        self.currentContainer.reload()
+        InfoContainer(self.currentContainer, self)
+        print("Showing tree")
+
         
     def doDeleteContainer(self):
         ask = QMessageBox()

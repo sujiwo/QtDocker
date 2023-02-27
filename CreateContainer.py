@@ -10,43 +10,6 @@ from PySide2.QtUiTools import QUiLoader
 from Widgets import *
 
 
-class WindowFromUiFile():
-    def __init__(self, uiFilePath, parentWindow):
-        loader = QUiLoader()
-        self.window = loader.load(uiFilePath, parentWindow)
-        self.childList = {}
-        self.enumChildrenTree(self.window)
-        self.setupUi()
-        
-    def show(self):
-        self.window.show()
-        
-    def w(self, objectName):
-        try:
-            return self.childList[objectName]
-        except KeyError:
-            return None
-        
-    def __getattr__(self, objectName):
-        try:
-            return self.childList[objectName]
-        except KeyError:
-            raise AttributeError("Object {} not found".format(objectName))
-        
-    def enumChildrenTree(self, parent):
-        for o in parent.children():
-            if o.objectName()=='':
-                continue
-            if len(o.children())!=0 :
-                self.enumChildrenTree(o)
-            else: pass
-            self.childList[o.objectName()] = o
-        return
-    
-    def setupUi(self):
-        pass
-
-
 class CreateContainerWindow(WindowFromUiFile):
     def __init__(self, _parentApp):
         self.parent = _parentApp
@@ -150,7 +113,6 @@ class CreateContainerWindow(WindowFromUiFile):
         pathInp.setPlaceholderText("<Host folder or volume name>")
         isReadonlyChk.setText("Read-only")
         modWind.exec_()
-    
     
     
     
