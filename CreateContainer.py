@@ -13,7 +13,10 @@ from Widgets import *
 class CreateContainerWindow(WindowFromUiFile):
     def __init__(self, _parentApp):
         self.parent = _parentApp
+        self.gpuWidgetList = []
         WindowFromUiFile.__init__(self, 'createContainer.ui', _parentApp.window)
+        self.alreadyTakenLbl.hide()
+        self.gpuUsed = []
         self.window.exec_()
         
     def setupUi(self):
@@ -27,6 +30,7 @@ class CreateContainerWindow(WindowFromUiFile):
         # Nothing
         self.cancelBtn.clicked.connect(self.window.reject)
         self.addVolBtn.clicked.connect(self.addVolumeClick)
+        self.useAllGpuChk.stateChanged.connect(self.useAllGpu)
         
     def fillContents(self):
         self.sourceImageCbx.clear()
@@ -41,6 +45,8 @@ class CreateContainerWindow(WindowFromUiFile):
                 chk = QCheckBox(g['name'])
                 self.gpuListCtn.layout().addWidget(chk)
                 chk.id = g['id']
+                self.gpuWidgetList.append(chk)
+                chk.stateChanged.connect(lambda x: self.singleGpuChecked(x, chk.id))
                 
     def performCreate(self):
         print('Validating...')
@@ -64,7 +70,40 @@ class CreateContainerWindow(WindowFromUiFile):
                 p = self.sharedFolderTblCtn.item(r,0).text()
                 arg['volumes'][p] = {'bind':self.sharedFolderTblCtn.item(r,1).text(),
                                      'mode':self.sharedFolderTblCtn.item(r,2).text()}
+        if self.exitRemoveChk.isChecked()==True:
+            arg['auto_remove'] = True
+        if len(self.gpuUsed)!=0:
+            arg['runtime']='nvidia'
+            if self.gpuUsed=='all':
+                arg['gpus']='all'
+            else:
+                pass
+            
         return arg
+    
+    def useAllGpu(self):
+        if (self.useAllGpuChk.isChecked()==True):
+            print('Using all GPU')
+            self.gpuUsed = 'all'
+            for w in self.gpuWidgetList:
+                w.setEnabled(False)
+                w.setChecked(False)
+            pass
+        else:
+            print('Not using any GPU')
+            self.gpuUsed = []
+            for w in self.gpuWidgetList: 
+                w.setEnabled(True)
+                w.setChecked(False)
+            pass
+        
+    def singleGpuChecked(self, isChecked, gpuId):
+        if (isChecked!=0):
+            if gpuId not in self.gpuUsed:
+                self.gpuUsed.append(gpuId)
+        else:
+            if gpuId in self.gpuUsed:
+                self.gpuUsed.remove(gpuId)
 
     @Slot()
     def addVolumeClick(self):

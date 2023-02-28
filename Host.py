@@ -8,6 +8,7 @@ import docker
 import subprocess
 import re
 
+
 nvidia_smi_re = '^GPU ([0-9]+): ([\-\s\w]+) \(UUID: ([\-0-9A-Za-z]+)\)'
 
 
@@ -24,9 +25,6 @@ class Host(docker.DockerClient):
         else: self.remote = False
         self.lastInfo = self.info()
         x = self.hasGpu()
-        pass
-    
-    def getInfo(self):
         pass
     
     def hasGpu(self):
@@ -57,3 +55,6 @@ class Host(docker.DockerClient):
     
     def getImageList(self):
         return self.images.list()
+    
+
+        

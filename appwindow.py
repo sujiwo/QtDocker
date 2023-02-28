@@ -75,6 +75,11 @@ class DockerApp(QApplication):
             self.window.networkTableCtn.setItem(i, 1, TableItemRO(net.attrs['Driver']))
             self.window.networkTableCtn.setItem(i, 2, TableItemRO(net.attrs['Scope']))
             self.window.networkTableCtn.setItem(i, 3, TableItemRO(net.short_id))
+            
+        # Update system info
+        sysInfo = self.client.info()
+        displayDictToTree(sysInfo, self.window.sysInfoTree)
+        
         
     def createConnection(self):
         self.client = docker.client.DockerClient()

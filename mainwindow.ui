@@ -145,7 +145,8 @@
                 <string>Pause</string>
                </property>
                <property name="icon">
-                <iconset theme="media-playback-pause"/>
+                <iconset theme="media-playback-pause">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
                <property name="checkable">
                 <bool>true</bool>
@@ -306,7 +307,8 @@
                 <string>Inspect...</string>
                </property>
                <property name="icon">
-                <iconset theme="edit-find"/>
+                <iconset theme="edit-find">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -316,7 +318,8 @@
                 <string>Delete</string>
                </property>
                <property name="icon">
-                <iconset theme="edit-delete"/>
+                <iconset theme="edit-delete">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -326,7 +329,8 @@
                 <string>Pull...</string>
                </property>
                <property name="icon">
-                <iconset theme="document-save"/>
+                <iconset theme="document-save">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -336,7 +340,8 @@
                 <string>Push...</string>
                </property>
                <property name="icon">
-                <iconset theme="document-send"/>
+                <iconset theme="document-send">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -346,7 +351,8 @@
                 <string>Load...</string>
                </property>
                <property name="icon">
-                <iconset theme="document-open"/>
+                <iconset theme="document-open">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -356,7 +362,8 @@
                 <string>Save...</string>
                </property>
                <property name="icon">
-                <iconset theme="document-save-as"/>
+                <iconset theme="document-save-as">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -486,6 +493,22 @@
        <attribute name="title">
         <string>Sys. Info</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <widget class="QTreeWidget" name="sysInfoTree">
+          <column>
+           <property name="text">
+            <string>Key</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Value</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -497,7 +520,7 @@
      <x>0</x>
      <y>0</y>
      <width>971</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

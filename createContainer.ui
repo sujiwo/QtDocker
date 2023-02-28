@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>890</height>
+    <height>678</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -133,13 +133,13 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>390</width>
-        <height>102</height>
+        <width>475</width>
+        <height>68</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="useAllGpuChk">
          <property name="text">
           <string>All</string>
          </property>
@@ -179,6 +179,13 @@
          <widget class="QCheckBox" name="checkBox_6">
           <property name="text">
            <string>Use X11 support</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="exitRemoveChk">
+          <property name="text">
+           <string>Remove after exit</string>
           </property>
          </widget>
         </item>
@@ -328,6 +335,22 @@
     <widget class="QDoubleSpinBox" name="numOfCPUInput">
      <property name="decimals">
       <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="alreadyTakenLbl">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Already taken</string>
      </property>
     </widget>
    </item>

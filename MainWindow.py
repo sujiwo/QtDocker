@@ -133,7 +133,13 @@ class Ui_MainWindow(object):
 
         self.pushButton_7 = QPushButton(self.widget)
         self.pushButton_7.setObjectName(u"pushButton_7")
-        icon3 = QIcon(QIcon.fromTheme(u"media-playback-pause"))
+        icon3 = QIcon()
+        iconThemeName = u"media-playback-pause"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon3 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon3.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton_7.setIcon(icon3)
         self.pushButton_7.setCheckable(True)
 
@@ -266,42 +272,78 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.pushButton = QPushButton(self.widget_2)
         self.pushButton.setObjectName(u"pushButton")
-        icon9 = QIcon(QIcon.fromTheme(u"edit-find"))
+        icon9 = QIcon()
+        iconThemeName = u"edit-find"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon9 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon9.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton.setIcon(icon9)
 
         self.horizontalLayout_8.addWidget(self.pushButton)
 
         self.pushButton_2 = QPushButton(self.widget_2)
         self.pushButton_2.setObjectName(u"pushButton_2")
-        icon10 = QIcon(QIcon.fromTheme(u"edit-delete"))
+        icon10 = QIcon()
+        iconThemeName = u"edit-delete"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon10 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon10.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton_2.setIcon(icon10)
 
         self.horizontalLayout_8.addWidget(self.pushButton_2)
 
         self.pushButton_3 = QPushButton(self.widget_2)
         self.pushButton_3.setObjectName(u"pushButton_3")
-        icon11 = QIcon(QIcon.fromTheme(u"document-save"))
+        icon11 = QIcon()
+        iconThemeName = u"document-save"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon11 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon11.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton_3.setIcon(icon11)
 
         self.horizontalLayout_8.addWidget(self.pushButton_3)
 
         self.pushButton_4 = QPushButton(self.widget_2)
         self.pushButton_4.setObjectName(u"pushButton_4")
-        icon12 = QIcon(QIcon.fromTheme(u"document-send"))
+        icon12 = QIcon()
+        iconThemeName = u"document-send"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon12 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon12.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton_4.setIcon(icon12)
 
         self.horizontalLayout_8.addWidget(self.pushButton_4)
 
         self.pushButton_5 = QPushButton(self.widget_2)
         self.pushButton_5.setObjectName(u"pushButton_5")
-        icon13 = QIcon(QIcon.fromTheme(u"document-open"))
+        icon13 = QIcon()
+        iconThemeName = u"document-open"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon13 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon13.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton_5.setIcon(icon13)
 
         self.horizontalLayout_8.addWidget(self.pushButton_5)
 
         self.pushButton_6 = QPushButton(self.widget_2)
         self.pushButton_6.setObjectName(u"pushButton_6")
-        icon14 = QIcon(QIcon.fromTheme(u"document-save-as"))
+        icon14 = QIcon()
+        iconThemeName = u"document-save-as"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon14 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon14.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.pushButton_6.setIcon(icon14)
 
         self.horizontalLayout_8.addWidget(self.pushButton_6)
@@ -416,6 +458,13 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.networkTab, "")
         self.infoTab = QWidget()
         self.infoTab.setObjectName(u"infoTab")
+        self.verticalLayout_10 = QVBoxLayout(self.infoTab)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.sysInfoTree = QTreeWidget(self.infoTab)
+        self.sysInfoTree.setObjectName(u"sysInfoTree")
+
+        self.verticalLayout_10.addWidget(self.sysInfoTree)
+
         self.tabWidget.addTab(self.infoTab, "")
 
         self.verticalLayout.addWidget(self.tabWidget)
@@ -423,7 +472,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 971, 22))
+        self.menubar.setGeometry(QRect(0, 0, 971, 23))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuEdit = QMenu(self.menubar)
@@ -504,6 +553,9 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem10 = self.networkTableCtn.horizontalHeaderItem(3)
         ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.networkTab), QCoreApplication.translate("MainWindow", u"Networks", None))
+        ___qtreewidgetitem = self.sysInfoTree.headerItem()
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Value", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Key", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.infoTab), QCoreApplication.translate("MainWindow", u"Sys. Info", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
