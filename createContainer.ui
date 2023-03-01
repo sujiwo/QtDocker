@@ -119,6 +119,12 @@
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -149,21 +155,21 @@
      </widget>
     </widget>
    </item>
-   <item row="9" column="0">
+   <item row="10" column="0">
     <widget class="QLabel" name="volumesLabel">
      <property name="text">
       <string>Shared Folders</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="0">
+   <item row="11" column="0">
     <widget class="QLabel" name="optionsLabel">
      <property name="text">
       <string>Options</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="1">
+   <item row="11" column="1">
     <widget class="QWidget" name="optionsWidget" native="true">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
@@ -194,7 +200,7 @@
      </layout>
     </widget>
    </item>
-   <item row="12" column="1">
+   <item row="13" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QPushButton" name="okBtn">
@@ -219,7 +225,7 @@
      </item>
     </layout>
    </item>
-   <item row="11" column="1">
+   <item row="12" column="1">
     <widget class="QWidget" name="devicesWidget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
@@ -239,18 +245,24 @@
      </layout>
     </widget>
    </item>
-   <item row="11" column="0">
+   <item row="12" column="0">
     <widget class="QLabel" name="devicesLabel">
      <property name="text">
       <string>Devices</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QTableWidget" name="sharedFolderTblCtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="selectionMode">
          <enum>QAbstractItemView::SingleSelection</enum>
         </property>
@@ -352,6 +364,92 @@
      <property name="text">
       <string>Already taken</string>
      </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="portMappingLbl">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Port Mapping</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QWidget" name="portMappingDisplay" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::AllEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Container</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Host</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_4" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Add</string>
+           </property>
+           <property name="icon">
+            <iconset theme="list-add"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Delete</string>
+           </property>
+           <property name="icon">
+            <iconset theme="list-remove"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

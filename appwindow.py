@@ -12,6 +12,7 @@ from PySide2.QtUiTools import QUiLoader
 from MainWindow import Ui_MainWindow
 from CreateContainer import CreateContainerWindow
 from InfoContainer import InfoContainer
+from ImageInfo import ImageInfo
 from Host import Host
 from Widgets import *
 
@@ -119,6 +120,11 @@ class DockerApp(QApplication):
         else:
             self.window.infoContainerBtn.setEnabled(False)
             
+    def changeImageSelection(self, current, prev):
+        selector = current.indexes()[0].row()
+        self.currentImage = self.imageList[selector]
+        pass
+            
         
     def _setSignals(self):
         self.window.createContainerBtn.clicked.connect(self.createContainerClick)
@@ -126,10 +132,12 @@ class DockerApp(QApplication):
         self.window.hostSelectorBox.lineEdit().returnPressed.connect(self.changeConnection)
         self.window.hostSelectorBox.currentIndexChanged.connect(self.changeConnection)
         self.window.containerTableCtn.selectionModel().selectionChanged.connect(self.changeContainerSelection)
+        self.window.imageTableCtn.selectionModel().selectionChanged.connect(self.changeImageSelection)
         self.window.startContainerBtn.clicked.connect(self.doStartContainer)
         self.window.stopContainerBtn.clicked.connect(self.doStopContainer)
         self.window.deleteContainerBtn.clicked.connect(self.doDeleteContainer)
         self.window.infoContainerBtn.clicked.connect(self.doInspectContainer)
+        self.window.inspectBtn.clicked.connect(lambda: ImageInfo(self))
         
     def exec_(self):
         self.window = MainWindow()
@@ -197,6 +205,7 @@ class DockerApp(QApplication):
             self.currentContainer.remove()
             self._updateContents()
         else: print("Abort deletion")
+        
 
 
 if __name__ == "__main__":

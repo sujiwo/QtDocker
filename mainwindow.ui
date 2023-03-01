@@ -302,7 +302,7 @@
            <widget class="QWidget" name="widget_2" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="inspectBtn">
                <property name="text">
                 <string>Inspect...</string>
                </property>

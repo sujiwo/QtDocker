@@ -270,8 +270,8 @@ class Ui_MainWindow(object):
         self.widget_2.setObjectName(u"widget_2")
         self.horizontalLayout_8 = QHBoxLayout(self.widget_2)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.pushButton = QPushButton(self.widget_2)
-        self.pushButton.setObjectName(u"pushButton")
+        self.inspectBtn = QPushButton(self.widget_2)
+        self.inspectBtn.setObjectName(u"inspectBtn")
         icon9 = QIcon()
         iconThemeName = u"edit-find"
         if QIcon.hasThemeIcon(iconThemeName):
@@ -279,9 +279,9 @@ class Ui_MainWindow(object):
         else:
             icon9.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
         
-        self.pushButton.setIcon(icon9)
+        self.inspectBtn.setIcon(icon9)
 
-        self.horizontalLayout_8.addWidget(self.pushButton)
+        self.horizontalLayout_8.addWidget(self.inspectBtn)
 
         self.pushButton_2 = QPushButton(self.widget_2)
         self.pushButton_2.setObjectName(u"pushButton_2")
@@ -529,7 +529,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.containerTab), QCoreApplication.translate("MainWindow", u"Containers", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
+        self.inspectBtn.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Pull...", None))
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Push...", None))
