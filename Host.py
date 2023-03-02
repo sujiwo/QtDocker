@@ -7,6 +7,7 @@ Created on 21 Feb 2023
 import docker
 import subprocess
 import re
+import xml.dom.minidom
 
 
 nvidia_smi_re = '^GPU ([0-9]+): ([\-\s\w]+) \(UUID: ([\-0-9A-Za-z]+)\)'
@@ -40,14 +41,29 @@ class Host(docker.DockerClient):
                 matches=re.match(nvidia_smi_re, g)
                 gpuid=int(matches[1])
                 gpuname=matches[2]
-                gpuuuid=matches[3]
-                self.gpuList.append({'id':gpuid, 'name':gpuname, 'uuid':gpuuuid})
+                uuid=matches[3]
+                self.gpuList.append({'id':gpuid, 'name':gpuname, 'uuid':uuid})
             return True
         except:
             return False
     
     def hasNvidiaContainerSupport(self):
         pass
+    
+    # Parse more complete output of nvidia-smi with XML
+    # XXX: Unfinished
+    def hasGpu2(self):
+        self.gpuList = []
+        try:
+            if self.remote==False:
+                cmdoutput = subprocess.run(['nvidia-smi', '-q', '-x'], capture_output=True)
+            else:
+                stdin, stdout, stderr = self.ssh_client.exec_command('nvidia-smi -q -x')
+                cmdoutput = stdout.read()
+            return True
+        except:
+            return False
+            
     
     # XXX: Need to fix
     def getContainerList(self):

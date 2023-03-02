@@ -16,3 +16,5 @@ class ImageInfo(WindowFromUiFile):
         imageInfo = self.parent.currentImage.attrs
         displayDictToTree(imageInfo, self.imageInfo)
         self.window.exec_()
+        
+

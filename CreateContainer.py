@@ -8,6 +8,7 @@ from PySide2.QtCore import Slot, QMetaObject, Qt
 from PySide2.QtWidgets import *
 from PySide2.QtUiTools import QUiLoader
 from Widgets import *
+from docker.types import DeviceRequest
 
 
 class CreateContainerWindow(WindowFromUiFile):
@@ -74,11 +75,24 @@ class CreateContainerWindow(WindowFromUiFile):
             arg['auto_remove'] = True
         if len(self.gpuUsed)!=0:
             arg['runtime']='nvidia'
+            capabilities=[['compute','utility','graphics','video','display']]
             if self.gpuUsed=='all':
-                arg['gpus']='all'
+                arg['device_requests']=[DeviceRequest(count=-1, driver='nvidia', capabilities=capabilities)]
             else:
-                pass
-            
+                devId = [self.parent.client.gpuList[g]['uuid'] for g in self.gpuUsed]
+                arg['device_requests']=[DeviceRequest(device_ids=devId, driver='nvidia', capabilities=capabilities)]
+        ports={}
+        for r in range(self.portmapTbl.rowCount()):
+            try:
+                src=self.portmapTbl.item(r,0).text()
+            except AttributeError: continue
+            if len(src)!=0:
+                try: 
+                    dst=self.portmapTbl.item(r,1).text()
+                except AttributeError: 
+                    dst = None
+                ports[src]=dst
+        arg['ports']=ports
         return arg
     
     def useAllGpu(self):

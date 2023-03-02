@@ -13,6 +13,7 @@ from MainWindow import Ui_MainWindow
 from CreateContainer import CreateContainerWindow
 from InfoContainer import InfoContainer
 from ImageInfo import ImageInfo
+from CommitContainer import CommitContainer
 from Host import Host
 from Widgets import *
 
@@ -138,6 +139,7 @@ class DockerApp(QApplication):
         self.window.deleteContainerBtn.clicked.connect(self.doDeleteContainer)
         self.window.infoContainerBtn.clicked.connect(self.doInspectContainer)
         self.window.inspectBtn.clicked.connect(lambda: ImageInfo(self))
+        self.window.commitContainerBtn.clicked.connect(lambda: CommitContainer(self))
         
     def exec_(self):
         self.window = MainWindow()
