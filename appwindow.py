@@ -50,10 +50,11 @@ class DockerApp(QApplication):
         self.window.containerTableCtn.setRowCount(len(self.containerList))
         for i in range(len(self.containerList)):
             ctn = self.containerList[i]
-            self.window.containerTableCtn.setItem(i, 0, TableItemRO(ctn.name))
-            self.window.containerTableCtn.setItem(i, 1, TableItemRO(ctn.image.tags[0]))
-            self.window.containerTableCtn.setItem(i, 3, TableItemRO(ctn.status))
-            self.window.containerTableCtn.setItem(i, 4, TableItemRO(ctn.id[0:12]))
+            self.window.containerTableCtn.setItem(i, 0, TableItemRO(ctn['ID']))
+            self.window.containerTableCtn.setItem(i, 1, TableItemRO(ctn['Name']))
+            self.window.containerTableCtn.setItem(i, 2, TableItemRO(ctn['Image']))
+            self.window.containerTableCtn.setItem(i, 3, TableItemRO(ctn['CreatedAt']))
+            self.window.containerTableCtn.setItem(i, 4, TableItemRO(ctn['State']))
         
         # Update image list
         self.imageList = self.client.getImageList()
@@ -61,9 +62,9 @@ class DockerApp(QApplication):
         self.window.imageTableCtn.setRowCount(len(self.imageList))
         for i in range(len(self.imageList)):
             im = self.imageList[i]
-            self.window.imageTableCtn.setItem(i, 0, TableItemRO(im.tags[0]))
-            size = humanize.naturalsize(im.attrs['Size'])
-            self.window.imageTableCtn.setItem(i, 1, TableItemRO(size))
+            self.window.imageTableCtn.setItem(i, 0, TableItemRO(im['ID']))
+            self.window.imageTableCtn.setItem(i, 1, TableItemRO(im['Name']))
+            self.window.imageTableCtn.setItem(i, 2, TableItemRO(im['VirtualSize']))
             
         # Update volume list
         
@@ -92,19 +93,17 @@ class DockerApp(QApplication):
         if (url=='Local'): urls = ''
         else: urls = url
         print("Changed: {}".format(urls))
-        try:
-            newclient = Host(urls)
-            self.client = newclient
-            if url not in self.config['hosts']:
-                self.config['hosts'].append(url)
-            self._updateContents()
-        except Exception as e:
-            print('Unable to connect: {}'.format(e.args))
+        newclient = Host(urls)
+        self.client = newclient
+        if url not in self.config['hosts']:
+            self.config['hosts'].append(url)
+        self._updateContents()
             
     def changeContainerSelection(self, current, prev):
         if (len(current.indexes())!=0):
             selector = current.indexes()[0].row()
-            self.currentContainer = self.containerList[selector]
+            id = self.window.containerTableCtn.item(selector, 0).text()
+            self.currentContainer = self.client.containers.get(id)
             if self.currentContainer.status!='running':
                 self.window.startContainerBtn.setEnabled(True)
                 self.window.stopContainerBtn.setEnabled(False)
@@ -120,10 +119,12 @@ class DockerApp(QApplication):
             self.window.infoContainerBtn.setEnabled(True)
         else:
             self.window.infoContainerBtn.setEnabled(False)
-            
+        
+    # XXX: need to change    
     def changeImageSelection(self, current, prev):
         selector = current.indexes()[0].row()
-        self.currentImage = self.imageList[selector]
+        id = self.window.imageTableCtn.item(selector, 0).text()
+        self.currentImage = self.client.images.get(id)
         pass
             
         

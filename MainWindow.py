@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon = QIcon.fromTheme(iconThemeName)
         else:
-            icon.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon.addFile(u"../.designer/.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.refreshBtn.setIcon(icon)
 
@@ -110,7 +110,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon1 = QIcon.fromTheme(iconThemeName)
         else:
-            icon1.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon1.addFile(u"../.designer/.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.createContainerBtn.setIcon(icon1)
 
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon2 = QIcon.fromTheme(iconThemeName)
         else:
-            icon2.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon2.addFile(u"../.designer/.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.startContainerBtn.setIcon(icon2)
         self.startContainerBtn.setFlat(False)
@@ -138,7 +138,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon3 = QIcon.fromTheme(iconThemeName)
         else:
-            icon3.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon3.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.pushButton_7.setIcon(icon3)
         self.pushButton_7.setCheckable(True)
@@ -153,7 +153,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon4 = QIcon.fromTheme(iconThemeName)
         else:
-            icon4.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon4.addFile(u"../.designer/.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.stopContainerBtn.setIcon(icon4)
         self.stopContainerBtn.setFlat(False)
@@ -168,7 +168,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon5 = QIcon.fromTheme(iconThemeName)
         else:
-            icon5.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon5.addFile(u"../.designer/.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.commitContainerBtn.setIcon(icon5)
         self.commitContainerBtn.setFlat(False)
@@ -183,7 +183,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon6 = QIcon.fromTheme(iconThemeName)
         else:
-            icon6.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon6.addFile(u"../.designer/.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.deleteContainerBtn.setIcon(icon6)
         self.deleteContainerBtn.setFlat(False)
@@ -198,7 +198,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon7 = QIcon.fromTheme(iconThemeName)
         else:
-            icon7.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon7.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.terminalBtn.setIcon(icon7)
 
@@ -212,7 +212,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon8 = QIcon.fromTheme(iconThemeName)
         else:
-            icon8.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon8.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.infoContainerBtn.setIcon(icon8)
 
@@ -277,7 +277,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon9 = QIcon.fromTheme(iconThemeName)
         else:
-            icon9.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon9.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.inspectBtn.setIcon(icon9)
 
@@ -290,7 +290,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon10 = QIcon.fromTheme(iconThemeName)
         else:
-            icon10.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon10.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.pushButton_2.setIcon(icon10)
 
@@ -303,7 +303,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon11 = QIcon.fromTheme(iconThemeName)
         else:
-            icon11.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon11.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.pushButton_3.setIcon(icon11)
 
@@ -316,7 +316,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon12 = QIcon.fromTheme(iconThemeName)
         else:
-            icon12.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon12.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.pushButton_4.setIcon(icon12)
 
@@ -329,7 +329,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon13 = QIcon.fromTheme(iconThemeName)
         else:
-            icon13.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon13.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.pushButton_5.setIcon(icon13)
 
@@ -342,7 +342,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon14 = QIcon.fromTheme(iconThemeName)
         else:
-            icon14.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+            icon14.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.pushButton_6.setIcon(icon14)
 
@@ -352,12 +352,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.widget_2)
 
         self.imageTableCtn = QTableWidget(self.imageTab)
-        if (self.imageTableCtn.columnCount() < 2):
-            self.imageTableCtn.setColumnCount(2)
+        if (self.imageTableCtn.columnCount() < 3):
+            self.imageTableCtn.setColumnCount(3)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.imageTableCtn.setHorizontalHeaderItem(0, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         self.imageTableCtn.setHorizontalHeaderItem(1, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.imageTableCtn.setHorizontalHeaderItem(2, __qtablewidgetitem7)
         self.imageTableCtn.setObjectName(u"imageTableCtn")
         self.imageTableCtn.setSelectionMode(QAbstractItemView.SingleSelection)
         self.imageTableCtn.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -413,7 +415,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon15 = QIcon.fromTheme(iconThemeName)
         else:
-            icon15.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon15.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.createNetworkBtn.setIcon(icon15)
 
@@ -426,7 +428,7 @@ class Ui_MainWindow(object):
         if QIcon.hasThemeIcon(iconThemeName):
             icon16 = QIcon.fromTheme(iconThemeName)
         else:
-            icon16.addFile(u"../.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
+            icon16.addFile(u"../.designer/.designer/backup", QSize(), QIcon.Normal, QIcon.Off)
         
         self.removeNetworkBtn.setIcon(icon16)
 
@@ -438,14 +440,14 @@ class Ui_MainWindow(object):
         self.networkTableCtn = QTableWidget(self.networkTab)
         if (self.networkTableCtn.columnCount() < 4):
             self.networkTableCtn.setColumnCount(4)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(0, __qtablewidgetitem7)
         __qtablewidgetitem8 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(1, __qtablewidgetitem8)
+        self.networkTableCtn.setHorizontalHeaderItem(0, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(2, __qtablewidgetitem9)
+        self.networkTableCtn.setHorizontalHeaderItem(1, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(3, __qtablewidgetitem10)
+        self.networkTableCtn.setHorizontalHeaderItem(2, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.networkTableCtn.setHorizontalHeaderItem(3, __qtablewidgetitem11)
         self.networkTableCtn.setObjectName(u"networkTableCtn")
         self.networkTableCtn.setSelectionMode(QAbstractItemView.SingleSelection)
         self.networkTableCtn.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -518,15 +520,15 @@ class Ui_MainWindow(object):
         self.terminalBtn.setText(QCoreApplication.translate("MainWindow", u"Open Terminal", None))
         self.infoContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Info...", None))
         ___qtablewidgetitem = self.containerTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem1 = self.containerTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Image", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Name", None));
         ___qtablewidgetitem2 = self.containerTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Created", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Image", None));
         ___qtablewidgetitem3 = self.containerTableCtn.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Created", None));
         ___qtablewidgetitem4 = self.containerTableCtn.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Status", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.containerTab), QCoreApplication.translate("MainWindow", u"Containers", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.inspectBtn.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
@@ -536,22 +538,24 @@ class Ui_MainWindow(object):
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"Load...", None))
         self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Save...", None))
         ___qtablewidgetitem5 = self.imageTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem6 = self.imageTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Size", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem7 = self.imageTableCtn.horizontalHeaderItem(2)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Size", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.imageTab), QCoreApplication.translate("MainWindow", u"Images", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.volumeTab), QCoreApplication.translate("MainWindow", u"Volumes", None))
         self.createNetworkBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
         self.removeNetworkBtn.setText(QCoreApplication.translate("MainWindow", u"Remove", None))
-        ___qtablewidgetitem7 = self.networkTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Name", None));
-        ___qtablewidgetitem8 = self.networkTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Driver", None));
-        ___qtablewidgetitem9 = self.networkTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Scope", None));
-        ___qtablewidgetitem10 = self.networkTableCtn.horizontalHeaderItem(3)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem8 = self.networkTableCtn.horizontalHeaderItem(0)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem9 = self.networkTableCtn.horizontalHeaderItem(1)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Driver", None));
+        ___qtablewidgetitem10 = self.networkTableCtn.horizontalHeaderItem(2)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Scope", None));
+        ___qtablewidgetitem11 = self.networkTableCtn.horizontalHeaderItem(3)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.networkTab), QCoreApplication.translate("MainWindow", u"Networks", None))
         ___qtreewidgetitem = self.sysInfoTree.headerItem()
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Value", None));

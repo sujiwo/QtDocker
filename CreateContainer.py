@@ -36,7 +36,7 @@ class CreateContainerWindow(WindowFromUiFile):
     def fillContents(self):
         self.sourceImageCbx.clear()
         for img in self.parent.imageList:
-            self.sourceImageCbx.addItem(img.tags[0])
+            self.sourceImageCbx.addItem(img['Name'])
         self.ramMBInput.setRange(0, self.parent.client.lastInfo['MemTotal']/(1024*1024))
         self.numOfCPUInput.setRange(0, self.parent.client.lastInfo['NCPU'])
         if (len(self.parent.client.gpuList)!=0):

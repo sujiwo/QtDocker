@@ -8,6 +8,7 @@ import docker
 import subprocess
 import re
 from xml.dom.minidom import parseString
+import json
 
 
 nvidia_smi_re = '^GPU ([0-9]+): ([\-\s\w]+) \(UUID: ([\-0-9A-Za-z]+)\)'
@@ -55,8 +56,8 @@ class Host(docker.DockerClient):
                     has_mig = True
                     mig_status = b_has_mig
                 self.gpuList.append({
-                        'gpuid':i,
-                        'gpuname':name,
+                        'id':i,
+                        'name':name,
                         'uuid':uuid,
                         'ram':ram,
                         'has_mig':has_mig,
@@ -70,10 +71,31 @@ class Host(docker.DockerClient):
     
     # XXX: Need to fix
     def getContainerList(self):
-        return self.containers.list(all=True, sparse=True)
+        containerList = []
+        if self.remote==True:
+            stdin, stdout, stderr = self.ssh_client.exec_command('docker container ls -a --format \'{{json .}}\'')
+            ctnlines = stdout.readlines()
+        else:
+            cmdoutput = subprocess.run(['docker', 'container', 'ls', '-a', '--format', '{{json .}}'], capture_output=True)
+            ctnlines = cmdoutput.stdout.decode('utf-8').strip().splitlines()
+        for l in ctnlines:
+            ctn = json.loads(l)
+            ctn['Name'] = ctn['Names']
+            containerList.append(ctn)
+        return containerList
     
     def getImageList(self):
-        return self.images.list()
-    
+        imageList = []
+        if self.remote==True:
+            stdin, stdout, stderr = self.ssh_client.exec_command('docker image ls --format \'{{json .}}\'')
+            imglines = stdout.readlines()
+        else:
+            cmdoutput = subprocess.run(['docker', 'image', 'ls', '--format', '{{json .}}'], capture_output=True)
+            imglines = cmdoutput.stdout.decode('utf-8').strip().splitlines()
+        for l in imglines:
+            img = json.loads(l)
+            img['Name'] = img['Repository']+':'+img['Tag']
+            imageList.append(img)
+        return imageList
 
         
