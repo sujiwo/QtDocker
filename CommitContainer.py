@@ -8,10 +8,6 @@ from Widgets import *
 
 
 class CommitContainer(WindowFromUiFile):
-    '''
-    classdocs
-    '''
-
 
     def __init__(self, parentApp):
         self.parent = parentApp
