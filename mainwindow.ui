@@ -82,7 +82,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="containerTab">
        <attribute name="title">
@@ -101,7 +101,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="containerFilterInp">
+              <property name="placeholderText">
+               <string>Not implemented</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -224,7 +228,7 @@
                 <bool>false</bool>
                </property>
                <property name="text">
-                <string>Info...</string>
+                <string>Inspect...</string>
                </property>
                <property name="icon">
                 <iconset theme="dialog-information">
@@ -294,7 +298,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_2"/>
+             <widget class="QLineEdit" name="imageFilterInp">
+              <property name="placeholderText">
+               <string>Not Implemented</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -388,7 +396,12 @@
             </column>
             <column>
              <property name="text">
-              <string>Name</string>
+              <string>Repository</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Tag</string>
              </property>
             </column>
             <column>

@@ -32,8 +32,7 @@ class Host(docker.DockerClient):
     def hasNvidiaContainerSupport(self):
         pass
     
-    # Parse more complete XML output from nvidia-smi
-    # XXX: Unfinished
+    # Check and enumerate GPU (NVIDIA only)
     def hasGpu(self):
         self.gpuList = []
         try:
@@ -69,7 +68,6 @@ class Host(docker.DockerClient):
             return False
             
     
-    # XXX: Need to fix
     def getContainerList(self):
         containerList = []
         if self.remote==True:

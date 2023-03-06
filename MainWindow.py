@@ -90,10 +90,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.label_2)
 
-        self.lineEdit = QLineEdit(self.containerTab)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.containerFilterInp = QLineEdit(self.containerTab)
+        self.containerFilterInp.setObjectName(u"containerFilterInp")
 
-        self.horizontalLayout_2.addWidget(self.lineEdit)
+        self.horizontalLayout_2.addWidget(self.containerFilterInp)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
@@ -258,10 +258,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.label_3)
 
-        self.lineEdit_2 = QLineEdit(self.imageTab)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.imageFilterInp = QLineEdit(self.imageTab)
+        self.imageFilterInp.setObjectName(u"imageFilterInp")
 
-        self.horizontalLayout_3.addWidget(self.lineEdit_2)
+        self.horizontalLayout_3.addWidget(self.imageFilterInp)
 
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
@@ -352,17 +352,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.widget_2)
 
         self.imageTableCtn = QTableWidget(self.imageTab)
-        if (self.imageTableCtn.columnCount() < 3):
-            self.imageTableCtn.setColumnCount(3)
+        if (self.imageTableCtn.columnCount() < 4):
+            self.imageTableCtn.setColumnCount(4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.imageTableCtn.setHorizontalHeaderItem(0, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         self.imageTableCtn.setHorizontalHeaderItem(1, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
         self.imageTableCtn.setHorizontalHeaderItem(2, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.imageTableCtn.setHorizontalHeaderItem(3, __qtablewidgetitem8)
         self.imageTableCtn.setObjectName(u"imageTableCtn")
         self.imageTableCtn.setSelectionMode(QAbstractItemView.SingleSelection)
         self.imageTableCtn.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.imageTableCtn.setSortingEnabled(True)
 
         self.verticalLayout_4.addWidget(self.imageTableCtn)
 
@@ -440,14 +443,14 @@ class Ui_MainWindow(object):
         self.networkTableCtn = QTableWidget(self.networkTab)
         if (self.networkTableCtn.columnCount() < 4):
             self.networkTableCtn.setColumnCount(4)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(0, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(1, __qtablewidgetitem9)
+        self.networkTableCtn.setHorizontalHeaderItem(0, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(2, __qtablewidgetitem10)
+        self.networkTableCtn.setHorizontalHeaderItem(1, __qtablewidgetitem10)
         __qtablewidgetitem11 = QTableWidgetItem()
-        self.networkTableCtn.setHorizontalHeaderItem(3, __qtablewidgetitem11)
+        self.networkTableCtn.setHorizontalHeaderItem(2, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.networkTableCtn.setHorizontalHeaderItem(3, __qtablewidgetitem12)
         self.networkTableCtn.setObjectName(u"networkTableCtn")
         self.networkTableCtn.setSelectionMode(QAbstractItemView.SingleSelection)
         self.networkTableCtn.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -511,6 +514,7 @@ class Ui_MainWindow(object):
 
         self.refreshBtn.setText(QCoreApplication.translate("MainWindow", u"Refresh", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
+        self.containerFilterInp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Not implemented", None))
         self.createContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
         self.startContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Pause", None))
@@ -518,7 +522,7 @@ class Ui_MainWindow(object):
         self.commitContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Commit...", None))
         self.deleteContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.terminalBtn.setText(QCoreApplication.translate("MainWindow", u"Open Terminal", None))
-        self.infoContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Info...", None))
+        self.infoContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
         ___qtablewidgetitem = self.containerTableCtn.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem1 = self.containerTableCtn.horizontalHeaderItem(1)
@@ -531,6 +535,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Status", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.containerTab), QCoreApplication.translate("MainWindow", u"Containers", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
+        self.imageFilterInp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Not Implemented", None))
         self.inspectBtn.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Pull...", None))
@@ -540,22 +545,24 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem5 = self.imageTableCtn.horizontalHeaderItem(0)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem6 = self.imageTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Repository", None));
         ___qtablewidgetitem7 = self.imageTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Size", None));
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Tag", None));
+        ___qtablewidgetitem8 = self.imageTableCtn.horizontalHeaderItem(3)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Size", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.imageTab), QCoreApplication.translate("MainWindow", u"Images", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.volumeTab), QCoreApplication.translate("MainWindow", u"Volumes", None))
         self.createNetworkBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
         self.removeNetworkBtn.setText(QCoreApplication.translate("MainWindow", u"Remove", None))
-        ___qtablewidgetitem8 = self.networkTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Name", None));
-        ___qtablewidgetitem9 = self.networkTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Driver", None));
-        ___qtablewidgetitem10 = self.networkTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Scope", None));
-        ___qtablewidgetitem11 = self.networkTableCtn.horizontalHeaderItem(3)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem9 = self.networkTableCtn.horizontalHeaderItem(0)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem10 = self.networkTableCtn.horizontalHeaderItem(1)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Driver", None));
+        ___qtablewidgetitem11 = self.networkTableCtn.horizontalHeaderItem(2)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Scope", None));
+        ___qtablewidgetitem12 = self.networkTableCtn.horizontalHeaderItem(3)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.networkTab), QCoreApplication.translate("MainWindow", u"Networks", None))
         ___qtreewidgetitem = self.sysInfoTree.headerItem()
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Value", None));

@@ -20,4 +20,5 @@ class CommitContainer(WindowFromUiFile):
         
     def doCommit(self):
         print('Committing')
+        # self.parent.currentContainer.
         pass

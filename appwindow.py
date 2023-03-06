@@ -63,8 +63,9 @@ class DockerApp(QApplication):
         for i in range(len(self.imageList)):
             im = self.imageList[i]
             self.window.imageTableCtn.setItem(i, 0, TableItemRO(im['ID']))
-            self.window.imageTableCtn.setItem(i, 1, TableItemRO(im['Name']))
-            self.window.imageTableCtn.setItem(i, 2, TableItemRO(im['VirtualSize']))
+            self.window.imageTableCtn.setItem(i, 1, TableItemRO(im['Repository']))
+            self.window.imageTableCtn.setItem(i, 2, TableItemRO(im['Tag']))
+            self.window.imageTableCtn.setItem(i, 3, TableItemRO(im['VirtualSize']))
             
         # Update volume list
         
@@ -100,6 +101,7 @@ class DockerApp(QApplication):
         self._updateContents()
             
     def changeContainerSelection(self, current, prev):
+        self.currentContainer = None
         if (len(current.indexes())!=0):
             selector = current.indexes()[0].row()
             id = self.window.containerTableCtn.item(selector, 0).text()
@@ -120,8 +122,10 @@ class DockerApp(QApplication):
         else:
             self.window.infoContainerBtn.setEnabled(False)
         
-    # XXX: need to change    
     def changeImageSelection(self, current, prev):
+        self.currentImage = None
+        if len(current.indexes())==0:
+            return
         selector = current.indexes()[0].row()
         id = self.window.imageTableCtn.item(selector, 0).text()
         self.currentImage = self.client.images.get(id)
