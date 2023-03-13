@@ -9,35 +9,28 @@ from pathlib import Path
 from PySide2.QtWidgets import *
 from PySide2.QtCore import Qt
 from PySide2.QtUiTools import QUiLoader
-from MainWindow import Ui_MainWindow
-from CreateContainer import CreateContainerWindow
-from InfoContainer import InfoContainer
-from ImageInfo import ImageInfo
-from CommitContainer import CommitContainer
-from Host import Host
-from Widgets import *
+from .MainWindow import Ui_MainWindow
+from .CreateContainer import CreateContainerWindow
+from .InfoContainer import InfoContainer
+from .ImageInfo import ImageInfo
+from .CommitContainer import CommitContainer
+from .Host import Host
+from .Widgets import *
 
 
 # For Windows, should use %LOCALAPPDATA%/docker.json
-configFile = Path(os.environ['HOME']) / '.config' / 'dockerapp.json'
-# dir1 = site.get
+configFile = Path(os.environ['HOME']) / '.config' / 'qtdocker.json'
 
 
-class WindowFromUiFile(QWidget):
-    def __init__(self, uiFilePath, parent):
-        super(WindowFromUiFile, self).__init__()
-        self.setParent(parent)
-        loader = QUiLoader()
-        loader.load(uiFilePath, self)
 
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class AppWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(AppWindow, self).__init__()
         self.setupUi(self)
         
 
-class DockerApp(QApplication):
+class QtDocker(QApplication):
     
     def __init__ (self, argv):
         QApplication.__init__(self, argv)
@@ -147,7 +140,7 @@ class DockerApp(QApplication):
         self.window.commitContainerBtn.clicked.connect(lambda: CommitContainer(self))
         
     def exec_(self):
-        self.window = MainWindow()
+        self.window = AppWindow()
         self.window.setWindowTitle("QtDocker")
         self.initApp()
         self._setSignals()
@@ -214,8 +207,8 @@ class DockerApp(QApplication):
         else: print("Abort deletion")
         
 
-
-if __name__ == "__main__":
-    app = DockerApp(sys.argv)
-    s = app.exec_()
-    sys.exit(s)
+#
+# if __name__ == "__main__":
+#     app = QtDocker(sys.argv)
+#     s = app.exec_()
+#     sys.exit(s)

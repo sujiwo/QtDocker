@@ -4,7 +4,7 @@ Created on 27 Feb 2023
 @author: sujiwo
 '''
 
-from Widgets import *
+from .Widgets import *
 import humanize
 
 
@@ -20,21 +20,31 @@ class ProcessListModel(QAbstractTableModel):
         self.update()
     
     def update(self):
+        if self.container.status!='running':
+            return
         # Retrieve list of processes running in this container
         self.lastResult = self.container.top(ps_args=self.ps_args)
         self.dataChanged.emit(self.index(0,0), self.index(-1,-1))
 
     def columnCount(self, _):
+        if self.container.status!='running':
+            return 0
         return len(self.lastResult['Titles'])
     
     def rowCount(self, _):
+        if self.container.status!='running':
+            return 0
         return len(self.lastResult['Processes'])
     
     def data(self, index, role):
+        if self.container.status!='running':
+            return 0
         if role==Qt.DisplayRole:
             return self.lastResult['Processes'][index.row()][index.column()]
     
     def headerData(self, section, orientation, role):
+        if self.container.status!='running':
+            return 0
         if role==Qt.DisplayRole:
             if orientation==Qt.Horizontal:
                 return self.lastResult['Titles'][section]

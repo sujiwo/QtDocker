@@ -7,7 +7,7 @@ Created on 21 Feb 2023
 from PySide2.QtCore import Slot, QMetaObject, Qt
 from PySide2.QtWidgets import *
 from PySide2.QtUiTools import QUiLoader
-from Widgets import *
+from .Widgets import *
 from docker.types import DeviceRequest
 
 

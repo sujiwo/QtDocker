@@ -4,7 +4,7 @@ Created on 1 Mar 2023
 @author: sujiwo
 '''
 
-from Widgets import *
+from .Widgets import *
 
 
 class CommitContainer(WindowFromUiFile):
