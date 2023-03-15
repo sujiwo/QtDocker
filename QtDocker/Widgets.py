@@ -8,8 +8,11 @@ Created on 25 Feb 2023
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 from PySide2.QtUiTools import QUiLoader
-from numpy import source
+from pathlib import Path
+import os
 
+
+myUiPath = Path(os.path.dirname(__file__))
 
 
 class TableItemRO(QTableWidgetItem):
@@ -20,7 +23,9 @@ class TableItemRO(QTableWidgetItem):
 class WindowFromUiFile():
     def __init__(self, uiFilePath, parentWindow):
         loader = QUiLoader()
-        self.window = loader.load(uiFilePath, parentWindow)
+        if os.path.isabs(uiFilePath)==False:
+            uiFilePath = myUiPath / 'ui' / uiFilePath
+        self.window = loader.load(str(uiFilePath), parentWindow)
         self.childList = {}
         self.enumChildrenTree(self.window)
         self.setupUi()

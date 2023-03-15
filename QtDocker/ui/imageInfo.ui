@@ -6,14 +6,42 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>419</width>
-    <height>430</height>
+    <width>657</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Containers</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QListWidget" name="relContainerList">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustToContents</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item>
     <widget class="QTreeWidget" name="imageInfo">
      <column>
@@ -29,9 +57,9 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="closeBtn">
-     <property name="text">
-      <string>Close</string>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
      </property>
     </widget>
    </item>
@@ -40,18 +68,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>closeBtn</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>imageInfoDlg</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>371</x>
-     <y>705</y>
+     <x>209</x>
+     <y>407</y>
     </hint>
     <hint type="destinationlabel">
-     <x>371</x>
-     <y>363</y>
+     <x>209</x>
+     <y>214</y>
     </hint>
    </hints>
   </connection>
