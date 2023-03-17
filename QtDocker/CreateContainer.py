@@ -58,6 +58,7 @@ class CreateContainerWindow(WindowFromUiFile):
     
     def _makeContainerArg(self):
         arg = {}
+        arg['devices'] = []
         arg['name'] = self.nameInput.text()
         arg['image'] = self.sourceImageCbx.currentText()
         if (self.isInteractive.isChecked()==True):
@@ -71,8 +72,10 @@ class CreateContainerWindow(WindowFromUiFile):
                 p = self.sharedFolderTblCtn.item(r,0).text()
                 arg['volumes'][p] = {'bind':self.sharedFolderTblCtn.item(r,1).text(),
                                      'mode':self.sharedFolderTblCtn.item(r,2).text()}
+                
         if self.exitRemoveChk.isChecked()==True:
             arg['auto_remove'] = True
+
         if len(self.gpuUsed)!=0:
             arg['runtime']='nvidia'
             capabilities=[['compute','utility','graphics','video','display']]
@@ -81,6 +84,7 @@ class CreateContainerWindow(WindowFromUiFile):
             else:
                 devId = [self.parent.client.gpuList[g]['uuid'] for g in self.gpuUsed]
                 arg['device_requests']=[DeviceRequest(device_ids=devId, driver='nvidia', capabilities=capabilities)]
+
         ports={}
         for r in range(self.portmapTbl.rowCount()):
             try:
@@ -93,6 +97,19 @@ class CreateContainerWindow(WindowFromUiFile):
                     dst = None
                 ports[src]=dst
         arg['ports']=ports
+        
+        match self.restartPolCbx.currentText():
+            case 'On failure, retry 3 times':
+                arg['restart_policy'] = {'Name': 'on-failure', 'MaximumRetryCount':3}
+            case 'Always':
+                arg['restart_policy'] = {'Name': 'always'}
+            case 'Unless stopped':
+                arg['restart_policy'] = {'Name': 'unless-stopped'}
+                
+        if self.serialPortChk.isChecked()==True:
+            serialPort = self.serialPortChooser.currentText()
+            arg['devices'].append('{}:{}:rwm'.format(serialPort, serialPort))
+            
         return arg
     
     def useAllGpu(self):

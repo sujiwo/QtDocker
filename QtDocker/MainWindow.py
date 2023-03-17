@@ -14,18 +14,18 @@ from PySide2.QtWidgets import *
 
 
 class Ui_MainWindow(object):
-    def setupUi(self, AppWindow):
-        if not AppWindow.objectName():
-            AppWindow.setObjectName(u"AppWindow")
-        AppWindow.resize(971, 658)
-        AppWindow.setMinimumSize(QSize(800, 600))
-        self.actionQuit = QAction(AppWindow)
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(971, 658)
+        MainWindow.setMinimumSize(QSize(800, 600))
+        self.actionQuit = QAction(MainWindow)
         self.actionQuit.setObjectName(u"actionQuit")
-        self.actionPreferences = QAction(AppWindow)
+        self.actionPreferences = QAction(MainWindow)
         self.actionPreferences.setObjectName(u"actionPreferences")
-        self.actionAbout = QAction(AppWindow)
+        self.actionAbout = QAction(MainWindow)
         self.actionAbout.setObjectName(u"actionAbout")
-        self.centralwidget = QWidget(AppWindow)
+        self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -92,6 +92,7 @@ class Ui_MainWindow(object):
 
         self.containerFilterInp = QLineEdit(self.containerTab)
         self.containerFilterInp.setObjectName(u"containerFilterInp")
+        self.containerFilterInp.setClearButtonEnabled(True)
 
         self.horizontalLayout_2.addWidget(self.containerFilterInp)
 
@@ -221,6 +222,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.widget)
 
+        self.containerTableV = QTableView(self.containerTab)
+        self.containerTableV.setObjectName(u"containerTableV")
+
+        self.verticalLayout_2.addWidget(self.containerTableV)
+
         self.containerTableCtn = QTableWidget(self.containerTab)
         if (self.containerTableCtn.columnCount() < 5):
             self.containerTableCtn.setColumnCount(5)
@@ -260,6 +266,7 @@ class Ui_MainWindow(object):
 
         self.imageFilterInp = QLineEdit(self.imageTab)
         self.imageFilterInp.setObjectName(u"imageFilterInp")
+        self.imageFilterInp.setClearButtonEnabled(True)
 
         self.horizontalLayout_3.addWidget(self.imageFilterInp)
 
@@ -388,6 +395,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_3 = QLineEdit(self.volumeTab)
         self.lineEdit_3.setObjectName(u"lineEdit_3")
+        self.lineEdit_3.setClearButtonEnabled(True)
 
         self.horizontalLayout_4.addWidget(self.lineEdit_3)
 
@@ -474,8 +482,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.tabWidget)
 
-        AppWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(AppWindow)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 971, 23))
         self.menuFile = QMenu(self.menubar)
@@ -484,10 +492,10 @@ class Ui_MainWindow(object):
         self.menuEdit.setObjectName(u"menuEdit")
         self.menuHelp = QMenu(self.menubar)
         self.menuHelp.setObjectName(u"menuHelp")
-        AppWindow.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(AppWindow)
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
-        AppWindow.setStatusBar(self.statusbar)
+        MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
@@ -496,80 +504,81 @@ class Ui_MainWindow(object):
         self.menuEdit.addAction(self.actionPreferences)
         self.menuHelp.addAction(self.actionAbout)
 
-        self.retranslateUi(AppWindow)
+        self.retranslateUi(MainWindow)
+        self.actionQuit.triggered.connect(MainWindow.close)
 
         self.tabWidget.setCurrentIndex(0)
 
 
-        QMetaObject.connectSlotsByName(AppWindow)
+        QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, AppWindow):
-        AppWindow.setWindowTitle(QCoreApplication.translate("AppWindow", u"AppWindow", None))
-        self.actionQuit.setText(QCoreApplication.translate("AppWindow", u"Quit", None))
-        self.actionPreferences.setText(QCoreApplication.translate("AppWindow", u"Preferences...", None))
-        self.actionAbout.setText(QCoreApplication.translate("AppWindow", u"About...", None))
-        self.label.setText(QCoreApplication.translate("AppWindow", u"Host", None))
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionQuit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
+        self.actionPreferences.setText(QCoreApplication.translate("MainWindow", u"Preferences...", None))
+        self.actionAbout.setText(QCoreApplication.translate("MainWindow", u"About...", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Host", None))
         self.hostSelectorBox.setItemText(0, "")
 
-        self.refreshBtn.setText(QCoreApplication.translate("AppWindow", u"Refresh", None))
-        self.label_2.setText(QCoreApplication.translate("AppWindow", u"Filter", None))
-        self.containerFilterInp.setPlaceholderText(QCoreApplication.translate("AppWindow", u"Not implemented", None))
-        self.createContainerBtn.setText(QCoreApplication.translate("AppWindow", u"Create...", None))
-        self.startContainerBtn.setText(QCoreApplication.translate("AppWindow", u"Start", None))
-        self.pushButton_7.setText(QCoreApplication.translate("AppWindow", u"Pause", None))
-        self.stopContainerBtn.setText(QCoreApplication.translate("AppWindow", u"Stop", None))
-        self.commitContainerBtn.setText(QCoreApplication.translate("AppWindow", u"Commit...", None))
-        self.deleteContainerBtn.setText(QCoreApplication.translate("AppWindow", u"Delete", None))
-        self.terminalBtn.setText(QCoreApplication.translate("AppWindow", u"Open Terminal", None))
-        self.infoContainerBtn.setText(QCoreApplication.translate("AppWindow", u"Inspect...", None))
+        self.refreshBtn.setText(QCoreApplication.translate("MainWindow", u"Refresh", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
+        self.containerFilterInp.setPlaceholderText("")
+        self.createContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
+        self.startContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Pause", None))
+        self.stopContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+        self.commitContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Commit...", None))
+        self.deleteContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.terminalBtn.setText(QCoreApplication.translate("MainWindow", u"Open Terminal", None))
+        self.infoContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
         ___qtablewidgetitem = self.containerTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("AppWindow", u"ID", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem1 = self.containerTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("AppWindow", u"Name", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Name", None));
         ___qtablewidgetitem2 = self.containerTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("AppWindow", u"Image", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Image", None));
         ___qtablewidgetitem3 = self.containerTableCtn.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("AppWindow", u"Created", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Created", None));
         ___qtablewidgetitem4 = self.containerTableCtn.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("AppWindow", u"Status", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.containerTab), QCoreApplication.translate("AppWindow", u"Containers", None))
-        self.label_3.setText(QCoreApplication.translate("AppWindow", u"Filter", None))
-        self.imageFilterInp.setPlaceholderText(QCoreApplication.translate("AppWindow", u"Not Implemented", None))
-        self.inspectBtn.setText(QCoreApplication.translate("AppWindow", u"Inspect...", None))
-        self.pushButton_2.setText(QCoreApplication.translate("AppWindow", u"Delete", None))
-        self.pushButton_3.setText(QCoreApplication.translate("AppWindow", u"Pull...", None))
-        self.pushButton_4.setText(QCoreApplication.translate("AppWindow", u"Push...", None))
-        self.pushButton_5.setText(QCoreApplication.translate("AppWindow", u"Load...", None))
-        self.pushButton_6.setText(QCoreApplication.translate("AppWindow", u"Save...", None))
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.containerTab), QCoreApplication.translate("MainWindow", u"Containers", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
+        self.imageFilterInp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Not Implemented", None))
+        self.inspectBtn.setText(QCoreApplication.translate("MainWindow", u"Inspect...", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Pull...", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Push...", None))
+        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"Load...", None))
+        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Save...", None))
         ___qtablewidgetitem5 = self.imageTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("AppWindow", u"ID", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem6 = self.imageTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("AppWindow", u"Repository", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Repository", None));
         ___qtablewidgetitem7 = self.imageTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("AppWindow", u"Tag", None));
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Tag", None));
         ___qtablewidgetitem8 = self.imageTableCtn.horizontalHeaderItem(3)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("AppWindow", u"Size", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.imageTab), QCoreApplication.translate("AppWindow", u"Images", None))
-        self.label_4.setText(QCoreApplication.translate("AppWindow", u"Filter", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.volumeTab), QCoreApplication.translate("AppWindow", u"Volumes", None))
-        self.createNetworkBtn.setText(QCoreApplication.translate("AppWindow", u"Create...", None))
-        self.removeNetworkBtn.setText(QCoreApplication.translate("AppWindow", u"Remove", None))
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Size", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.imageTab), QCoreApplication.translate("MainWindow", u"Images", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.volumeTab), QCoreApplication.translate("MainWindow", u"Volumes", None))
+        self.createNetworkBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
+        self.removeNetworkBtn.setText(QCoreApplication.translate("MainWindow", u"Remove", None))
         ___qtablewidgetitem9 = self.networkTableCtn.horizontalHeaderItem(0)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("AppWindow", u"Name", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Name", None));
         ___qtablewidgetitem10 = self.networkTableCtn.horizontalHeaderItem(1)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("AppWindow", u"Driver", None));
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Driver", None));
         ___qtablewidgetitem11 = self.networkTableCtn.horizontalHeaderItem(2)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("AppWindow", u"Scope", None));
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Scope", None));
         ___qtablewidgetitem12 = self.networkTableCtn.horizontalHeaderItem(3)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("AppWindow", u"ID", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.networkTab), QCoreApplication.translate("AppWindow", u"Networks", None))
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.networkTab), QCoreApplication.translate("MainWindow", u"Networks", None))
         ___qtreewidgetitem = self.sysInfoTree.headerItem()
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("AppWindow", u"Value", None));
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("AppWindow", u"Key", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.infoTab), QCoreApplication.translate("AppWindow", u"Sys. Info", None))
-        self.menuFile.setTitle(QCoreApplication.translate("AppWindow", u"File", None))
-        self.menuEdit.setTitle(QCoreApplication.translate("AppWindow", u"Edit", None))
-        self.menuHelp.setTitle(QCoreApplication.translate("AppWindow", u"Help", None))
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Value", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Key", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.infoTab), QCoreApplication.translate("MainWindow", u"Sys. Info", None))
+        self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+        self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
+        self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi
 

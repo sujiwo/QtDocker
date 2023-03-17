@@ -5,6 +5,7 @@ import os
 import docker
 import json
 import humanize
+import re
 from pathlib import Path
 from PySide2.QtWidgets import *
 from PySide2.QtCore import Qt
@@ -14,6 +15,7 @@ from .CreateContainer import CreateContainerWindow
 from .InfoContainer import InfoContainer
 from .ImageInfo import ImageInfo
 from .CommitContainer import CommitContainer
+from .ContainerListModel import ContainerListModel
 from .Host import Host
 from .Widgets import *
 
@@ -138,6 +140,8 @@ class QtDocker(QApplication):
         self.window.infoContainerBtn.clicked.connect(self.doInspectContainer)
         self.window.inspectBtn.clicked.connect(lambda: ImageInfo(self))
         self.window.commitContainerBtn.clicked.connect(lambda: CommitContainer(self))
+        # XXX: Temporary
+        self.window.containerFilterInp.textChanged.connect(lambda s: self.matchContainers(s))
         
     def exec_(self):
         self.window = AppWindow()
@@ -206,9 +210,12 @@ class QtDocker(QApplication):
             self._updateContents()
         else: print("Abort deletion")
         
+    def matchContainers(self, query):
+        cmatches = []
+        for c in self.containerList:
+            stringMatches = c['ID']+c['Name']+c['Image']+c['State']
+            if re.search(query, stringMatches):
+                cmatches.append(c['Name'])
+        print(cmatches)
+        return cmatches
 
-#
-# if __name__ == "__main__":
-#     app = QtDocker(sys.argv)
-#     s = app.exec_()
-#     sys.exit(s)

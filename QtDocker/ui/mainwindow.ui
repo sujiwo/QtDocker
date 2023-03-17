@@ -103,7 +103,10 @@
             <item>
              <widget class="QLineEdit" name="containerFilterInp">
               <property name="placeholderText">
-               <string>Not implemented</string>
+               <string/>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -240,6 +243,9 @@
            </widget>
           </item>
           <item>
+           <widget class="QTableView" name="containerTableV"/>
+          </item>
+          <item>
            <widget class="QTableWidget" name="containerTableCtn">
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
@@ -301,6 +307,9 @@
              <widget class="QLineEdit" name="imageFilterInp">
               <property name="placeholderText">
                <string>Not Implemented</string>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -432,7 +441,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_3"/>
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -584,5 +597,22 @@
   </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

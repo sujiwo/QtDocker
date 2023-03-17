@@ -13,3 +13,4 @@ if __name__=="__main__":
     app = QtDocker(sys.argv)
     s = app.exec_()
     sys.exit(s)
+    
