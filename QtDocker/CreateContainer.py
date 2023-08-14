@@ -13,7 +13,7 @@ from docker.types import DeviceRequest
 
 class CreateContainerWindow(WindowFromUiFile):
     def __init__(self, _parentApp):
-        self.parent = _parentApp
+        self.wparent = _parentApp
         self.gpuWidgetList = []
         WindowFromUiFile.__init__(self, 'createContainer.ui', _parentApp.window)
         self.alreadyTakenLbl.hide()
@@ -35,14 +35,14 @@ class CreateContainerWindow(WindowFromUiFile):
         
     def fillContents(self):
         self.sourceImageCbx.clear()
-        for img in self.parent.imageList:
+        for img in self.wparent.imageList:
             self.sourceImageCbx.addItem(img['Name'])
-        self.ramMBInput.setRange(0, self.parent.client.lastInfo['MemTotal']/(1024*1024))
-        self.numOfCPUInput.setRange(0, self.parent.client.lastInfo['NCPU'])
-        if (len(self.parent.client.gpuList)!=0):
+        self.ramMBInput.setRange(0, self.wparent.client.lastInfo['MemTotal']/(1024*1024))
+        self.numOfCPUInput.setRange(0, self.wparent.client.lastInfo['NCPU'])
+        if (len(self.wparent.client.gpuList)!=0):
             self.gpuLabel.setEnabled(True)
             self.gpuListScl.setEnabled(True)
-            for g in self.parent.client.gpuList:
+            for g in self.wparent.client.gpuList:
                 chk = QCheckBox(g['name'])
                 self.gpuListCtn.layout().addWidget(chk)
                 chk.id = g['id']
@@ -52,9 +52,9 @@ class CreateContainerWindow(WindowFromUiFile):
     def performCreate(self):
         print('Validating...')
         containerArg = self._makeContainerArg()
-        self.parent.client.containers.create(**containerArg)
+        self.wparent.client.containers.create(**containerArg)
         self.window.close()
-        self.parent._updateContents()
+        self.wparent._updateContents()
     
     def _makeContainerArg(self):
         arg = {}
@@ -82,7 +82,7 @@ class CreateContainerWindow(WindowFromUiFile):
             if self.gpuUsed=='all':
                 arg['device_requests']=[DeviceRequest(count=-1, driver='nvidia', capabilities=capabilities)]
             else:
-                devId = [self.parent.client.gpuList[g]['uuid'] for g in self.gpuUsed]
+                devId = [self.wparent.client.gpuList[g]['uuid'] for g in self.gpuUsed]
                 arg['device_requests']=[DeviceRequest(device_ids=devId, driver='nvidia', capabilities=capabilities)]
 
         ports={}

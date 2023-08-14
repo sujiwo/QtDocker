@@ -10,7 +10,7 @@ from .Widgets import *
 class CommitContainer(WindowFromUiFile):
 
     def __init__(self, parentApp):
-        self.parent = parentApp
+        self.wparent = parentApp
         WindowFromUiFile.__init__(self, 'commitContainer.ui', parentApp.window)
         self.window.exec_()
         
@@ -20,5 +20,5 @@ class CommitContainer(WindowFromUiFile):
         
     def doCommit(self):
         print('Committing')
-        # self.parent.currentContainer.
+        # self.wparent.currentContainer.
         pass

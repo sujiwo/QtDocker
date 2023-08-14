@@ -103,7 +103,7 @@
             <item>
              <widget class="QLineEdit" name="containerFilterInp">
               <property name="placeholderText">
-               <string/>
+               <string>Type name or image to search</string>
               </property>
               <property name="clearButtonEnabled">
                <bool>true</bool>
@@ -243,7 +243,23 @@
            </widget>
           </item>
           <item>
-           <widget class="QTableView" name="containerTableV"/>
+           <widget class="QTableView" name="containerTableV">
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderHighlightSections">
+             <bool>false</bool>
+            </attribute>
+           </widget>
           </item>
           <item>
            <widget class="QTableWidget" name="containerTableCtn">
@@ -611,6 +627,54 @@
     <hint type="destinationlabel">
      <x>485</x>
      <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>containerFilterInp</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>920</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>imageFilterInp</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>920</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>containerTableV</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>920</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>294</y>
     </hint>
    </hints>
   </connection>

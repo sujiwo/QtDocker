@@ -224,6 +224,11 @@ class Ui_MainWindow(object):
 
         self.containerTableV = QTableView(self.containerTab)
         self.containerTableV.setObjectName(u"containerTableV")
+        self.containerTableV.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.containerTableV.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.containerTableV.setSortingEnabled(True)
+        self.containerTableV.verticalHeader().setVisible(False)
+        self.containerTableV.verticalHeader().setHighlightSections(False)
 
         self.verticalLayout_2.addWidget(self.containerTableV)
 
@@ -506,6 +511,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.actionQuit.triggered.connect(MainWindow.close)
+        self.refreshBtn.clicked.connect(self.containerFilterInp.clear)
+        self.refreshBtn.clicked.connect(self.imageFilterInp.clear)
+        self.refreshBtn.clicked.connect(self.containerTableV.reset)
 
         self.tabWidget.setCurrentIndex(0)
 
@@ -523,7 +531,7 @@ class Ui_MainWindow(object):
 
         self.refreshBtn.setText(QCoreApplication.translate("MainWindow", u"Refresh", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
-        self.containerFilterInp.setPlaceholderText("")
+        self.containerFilterInp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type name or image to search", None))
         self.createContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Create...", None))
         self.startContainerBtn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Pause", None))

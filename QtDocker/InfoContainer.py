@@ -14,8 +14,8 @@ class ProcessListModel(QAbstractTableModel):
     
     ps_args='-o uid,pcpu,pmem,pid,cmd'
     
-    def __init__(self, parent, container):
-        super(ProcessListModel, self).__init__(parent)
+    def __init__(self, wparent, container):
+        super(ProcessListModel, self).__init__(wparent)
         self.container = container
         self.update()
     
@@ -57,7 +57,7 @@ class InfoContainer(WindowFromUiFile):
     classdocs
     '''
     def __init__(self, currentContainer, parentApp):
-        self.parent = parentApp
+        self.wparent = parentApp
         self.container = currentContainer
         WindowFromUiFile.__init__(self, 'infoContainer.ui', parentApp.window)
         self.showAttributes(self.container)
@@ -73,7 +73,7 @@ class InfoContainer(WindowFromUiFile):
         
         self.timer = QTimer(self.window)
         self.timer.timeout.connect(self.updateStats)
-        self.timer.start(self.parent.config['hz']*1e3)
+        self.timer.start(self.wparent.config['hz']*1e3)
         
         self.window.exec_()
         

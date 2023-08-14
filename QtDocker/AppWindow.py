@@ -182,6 +182,10 @@ class QtDocker(QApplication):
         # Fill with recently succesful connections
         for h in self.config['hosts']:
             self.window.hostSelectorBox.addItem(h)
+        # Initialize container view
+        self.containerListModel = ContainerListModel(self)
+        self.window.containerTableV.setModel(self.containerListModel)
+        self.containerListModel.dataChanged.connect(self.window.containerTableV.update)
             
     def doStartContainer(self):
         print('Starting: {}'.format(self.currentContainer.id))

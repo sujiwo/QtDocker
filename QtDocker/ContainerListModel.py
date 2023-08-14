@@ -12,31 +12,41 @@ class ContainerListModel(QAbstractTableModel):
     '''
     classdocs
     '''
+    columns = ['ID', 'Name', 'Image', 'Created', 'Status']
 
-    def __init__(self, parent):
-        self.parent = parent
-        super(ContainerListModel, self.__init__(parent))
+    def __init__(self, wparent):
+        self.wparent = wparent
+        super(ContainerListModel, self).__init__(wparent)
+        try:
+            self.filteredList = self.wparent.containerList
+        except AttributeError: self.filteredList = None
         
     def filterChanged(self):
-        pass
+        self.filteredList = self.matchContainers(self.wparent.window.containerFilterInp.text())
         
     def matchContainers(self, query):
         cmatches = []
-        for c in self.parent.containerList:
+        for c in self.wparent.containerList:
             stringMatches = c['ID']+c['Name']+c['Image']+c['State']
             if re.search(query, stringMatches):
                 cmatches.append(c['Name'])
-        print(cmatches)
         return cmatches
 
     def columnCount(self, _)->int:
-        pass
+        return len(self.columns)
     
     def rowCount(self, _)->int:
-        pass
+        if self.filteredList is None: return 0
+        return len(self.filteredList)
     
     def data(self, index, role):
-        pass
+        if role==Qt.DisplayRole:
+            field = self.columns[index.column()]
+            return self.filteredList[index.row()][field]
     
     def headerData(self, section, orientation, role):
-        pass
+        if role==Qt.DisplayRole:
+            if orientation==Qt.Horizontal:
+                self.columns[section]
+            if orientation==Qt.Vertical:
+                return str(section+1)
